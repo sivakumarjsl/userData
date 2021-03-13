@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { getUserDetails } from './service/action';
+import { getUserDetails } from '../service/action';
 
 
 const useStyles = makeStyles({
@@ -39,7 +39,7 @@ const UserTable = () => {
   return (
     <>
       <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table stickyHeader aria-label="sticky table"  className={classes.table}>
           <TableHead>
           <TableRow>
               <TableCell>Name</TableCell>

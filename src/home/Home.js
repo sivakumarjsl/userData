@@ -15,10 +15,10 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { Button } from '@material-ui/core';
-import { mainListItems } from './listItems';
+import { mainListItems } from '../listItems';
 import UserTable from './UserTable'
 import Create from './Create'
-import { CREDENTIALS } from "./sample";
+import { CREDENTIALS } from "../sample";
 
 
 
