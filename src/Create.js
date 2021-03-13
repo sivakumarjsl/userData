@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function Create(props) {
   const classes = useStyles();
 
   const handleSubmit = (event) => {
@@ -47,6 +47,7 @@ export default function SignIn() {
       JSON.parse(localStorage.getItem("userDetailsData"))
     );
     localStorage.setItem("userDetailsData", JSON.stringify(userData));
+    props.handleCreate()
   };
 
   return (
@@ -56,7 +57,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Create your New User
         </Typography>
-        <form onSubmit={handleSubmit} className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"

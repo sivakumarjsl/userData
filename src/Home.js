@@ -103,6 +103,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  btnWidth: {
+    width: "10%"
+  },
   fixedHeight: {
     height: 640,
   },
@@ -190,10 +193,10 @@ const Dashboard = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-              <Button xs={4} md={4} lg={4} className = "mt-3" variant="contained" onClick={handleCreate} color="primary">Create</Button>
+                <Button xs={4} md={4} lg={4} className = {classes.btnWidth} variant="contained" onClick={handleCreate} color="primary">Create</Button>
                 {create
                   ?
-                    <Create/>
+                    <Create handleCreate = {handleCreate}/>
                   :
                     <UserTable/>
                 }

@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
-  console.log("CREDENTIALS", CREDENTIALS);
   const handleSubmit = (event) => {
     event.preventDefault();
     let homeScreen =
@@ -43,7 +42,7 @@ export default function SignIn() {
           localStorage.setItem('userName', CREDENTIALS.username)
           localStorage.setItem('password', CREDENTIALS.password)
       } else {
-          console.log('LoginFailed')
+        alert('please enter correct user Credential')
       }
   };
 
@@ -57,7 +56,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form onSubmit={handleSubmit} className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
