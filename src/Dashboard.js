@@ -16,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { Button } from '@material-ui/core';
 import { mainListItems } from './listItems';
-import Home from './UserDetails'
+import UserTable from './UserTable'
 import Create from './Create'
 import { CREDENTIALS } from "./sample";
 
@@ -195,7 +195,7 @@ const Dashboard = () => {
                   ?
                     <Create/>
                   :
-                    <Home/>
+                    <UserTable/>
                 }
               </Paper>
             </Grid>

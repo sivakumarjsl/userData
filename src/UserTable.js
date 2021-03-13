@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Home = () => {
+const UserTable = () => {
 // style 
     const classes = useStyles();
 
@@ -71,4 +71,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default UserTable;
