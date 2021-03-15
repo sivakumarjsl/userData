@@ -58,6 +58,7 @@ export default function Create(props) {
           Create your New User
         </Typography>
         <form onSubmit={handleSubmit} className={classes.form}>
+          <div>
           <TextField
             variant="outlined"
             margin="normal"
@@ -90,6 +91,7 @@ export default function Create(props) {
             <MenuItem value="miss">miss</MenuItem>
             <MenuItem value="ms">ms</MenuItem>
           </TextField>
+          </div>
           <TextField
             variant="outlined"
             margin="normal"

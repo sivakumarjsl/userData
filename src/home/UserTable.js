@@ -26,15 +26,19 @@ const UserTable = () => {
 
   const dispatch = useDispatch();
 
-//   initial api trigger 
-  useEffect(() => {
-    dispatch(getUserDetails());
-  }, []);
+
 
 //  value assigned to state from localStorage 
   useEffect(() => {
     setuserData(JSON.parse(localStorage.getItem("userDetailsData")))
   },[localStorage.getItem("userDetailsData")])
+
+  //   initial api trigger 
+  useEffect(() => {
+    if(localStorage.getItem("userDetailsData")) {
+      dispatch(getUserDetails());
+    }
+  }, [!userData.length]);
 
   return (
     <>

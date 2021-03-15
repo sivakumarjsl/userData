@@ -109,6 +109,9 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 640,
   },
+  btnAlign: {
+    textAlign: 'end'
+  }
 }));
 
 const Dashboard = () => {
@@ -193,7 +196,15 @@ const Dashboard = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <Button xs={4} md={4} lg={4} className = {classes.btnWidth} variant="contained" onClick={handleCreate} color="primary">Create</Button>
+                <div className={classes.btnAlign}>
+                  <Button xs={4} md={4} lg={4} className = {classes.btnWidth} variant="contained" onClick={handleCreate} color="primary">
+                  {create
+                    ?  "Back"
+                    :
+                      "Create"
+                  }
+                  </Button>
+                </div>
                 {create
                   ?
                     <Create handleCreate = {handleCreate}/>
