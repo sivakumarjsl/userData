@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -31,6 +31,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+
+  useEffect(() => {
+    let homeScreen =
+    localStorage.getItem("userName") === CREDENTIALS.username &&
+    CREDENTIALS.password === localStorage.getItem("password");
+    if(homeScreen) {
+        window.location.href = "/home";
+    } else {
+        console.log('Loginsucess')
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
