@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import TextField from "@material-ui/core/TextField";
 import { getUserDetails } from '../service/action';
 
 
@@ -15,6 +16,9 @@ const useStyles = makeStyles({
   table: {
     minWidth: 950,
   },
+  searchBox: {
+    width: '30%',
+  }
 });
 
 const UserTable = () => {
@@ -23,6 +27,9 @@ const UserTable = () => {
 
 //   initial_state 
   const [userData, setuserData] = useState([]);
+  const [search, setSearch] = useState(false);
+
+
 
   const dispatch = useDispatch();
 
@@ -33,15 +40,50 @@ const UserTable = () => {
     setuserData(JSON.parse(localStorage.getItem("userDetailsData")))
   },[localStorage.getItem("userDetailsData")])
 
-  //   initial api trigger 
+  //   initial api trigger
   useEffect(() => {
-    if(localStorage.getItem("userDetailsData")) {
-      dispatch(getUserDetails());
-    }
-  }, [!userData.length]);
+      if(!(localStorage.getItem("userDetailsData"))) {
+        dispatch(getUserDetails());
+      }
+  }, [!userData.length && search === false]);
+
+  const handleSearch = (e) => {
+      setSearch(e.target.value)
+      if(e.target.value !=='' && localStorage.getItem("userDetailsData")) {
+        const arr = JSON.parse(localStorage.getItem("userDetailsData"))
+
+        let fliterArr  = arr.filter(item =>
+          item.user.username.toLowerCase().includes(e.target.value.toLowerCase())
+          || item.user.name.title.toLowerCase().includes(e.target.value.toLowerCase())
+          || item.user.name.first.toLowerCase().includes(e.target.value.toLowerCase())
+          || item.user.name.last.toLowerCase().includes (e.target.value.toLowerCase())
+          || item.user.gender.toLowerCase().includes(e.target.value.toLowerCase())
+          || item.user.email.toLowerCase().includes(e.target.value.toLowerCase())
+          || item.user.password.includes(e.target.value)
+        )
+        setuserData(fliterArr)
+      } else {
+        if(localStorage.getItem("userDetailsData")) {
+          setuserData(JSON.parse(localStorage.getItem("userDetailsData")))
+        } else {
+          setuserData([])
+        }
+      }
+  }
 
   return (
     <>
+      <TextField
+        variant="outlined"
+        margin="normal"
+        required
+        className = {classes.searchBox}
+        id="search"
+        label="Search"
+        name="Search"
+        autoFocus
+        onChange = {(e)=>handleSearch(e)}
+      />
       <TableContainer component={Paper}>
       <Table stickyHeader aria-label="sticky table"  className={classes.table}>
           <TableHead>

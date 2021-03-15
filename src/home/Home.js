@@ -110,7 +110,8 @@ const useStyles = makeStyles((theme) => ({
     height: 640,
   },
   btnAlign: {
-    textAlign: 'end'
+    textAlign: 'end',
+    marginBottom: "6px"
   }
 }));
 
